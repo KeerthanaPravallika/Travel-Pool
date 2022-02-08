@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accounts Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <style>
+        .navbarcss{
+            background-color: #01062D !important;            
+        }
+        body{
+            /*background-color:#c6e3ff;*/
+            /*background-color:#bcffff;*/
+            /*font-family: 'Open Sans', sans-serif;*/
+          }
+
+        .container1{
+            width:35em;
+            height:21em;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: white;
+            padding:40px;
+            border-radius:20px;
+            box-sizing : border-box;  
+            box-shadow : 14px 14px 20px #cbced1, -8px -8px 8px #6db6ff;
+            
+            /* Centering the div element*/            
+             
+              left: 0;
+              right: 0;  	
+              margin: auto;
+              margin-bottom: 2em;
+          }
+          .addButton{
+
+            position:absolute;
+            margin-top:-220px;
+            margin-left:320px;
+            width:150px;
+            height:40px;
+            border:none;
+            background-color: #98ccff;
+            border-radius: 20px;
+        }
+        .viewButton
+        {
+          position:absolute;
+          margin-top:-160px;
+          margin-left:320px;
+          width:150px;
+          height:40px;
+          border:none;
+          background-color: #01062D;
+          color:#ffffff;
+          border-radius: 20px;
+        }
+        .heading{
+            font-size: 25px;
+          }
+
+        .subhead{
+            font-size:17px;
+        }
+
+
+
+        @media (min-width: 1024px){
+            .activenow{
+                background-color:white;
+                color:black !important;
+                width:80px;
+                border-radius:20px;         
+                text-align: center;
+            }
+        }
+
+        @media (max-width:580px)
+        {
+             .container1{
+                width:90%;
+                height:95%;
+                background:#ffffff;
+                padding:40px;
+                border-radius:20px;
+                box-sizing : border-box;  
+                box-shadow : 14px 14px 20px #cbced1, -8px -8px 8px #6db6ff;
+                
+                /* Centering the div element*/
+                
+                 
+                  left: 0;
+                  right: 0;  	
+                  margin: auto;
+                  margin-bottom: 2em;
+                  
+             }  
+             .addButton{
+                position:initial;
+                margin-top:0.5em;
+                margin-left:15%;              
+                width:150px;
+                margin-bottom:20px;
+            }
+            .viewButton
+            {
+                position:initial;
+               margin-left:15%;
+              width:150px;
+            } 
+            .createButton
+            {
+                width:50%;
+                height:3em;
+            }
+            .heading{
+                font-size: 18px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top navbarcss">
+        <a class="navbar-brand pl-4" href="#"><img src="https://pts.gatech.edu/sites/default/files/uploads/images/superblock_images/carpool.png" width="40px"/>&nbsp;&nbsp;Travel Pool</a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto ">
+             
+            <a class="nav-link active  ml-4" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link active  ml-4" href="/pools">Pools</a>
+            <a class="nav-link active ml-4" href="/contact">Contact</a>
+            <a class="nav-link active activenow ml-4" href="">Account</a>
+           </div>
+           <div class="navbar-nav ml-auto ">
+            {% if user.is_authenticated %}
+            <li class="nav-link active pl-4">Hello {{user.first_name}} !</li>
+            <li><a  class="nav-link active pl-4" href="/register/logout">Logout</a></li>
+            {% else %}
+            <a class="nav-link active pl-4" href="/register/login">Login</a>
+            <a class="nav-link active pl-4" href="/register/signup">Sign Up</a>    
+            {% endif %}           
+           </div>
+          </div>
+        </div>
+      </nav><br><br><br><br>
+   <!-- <div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/pools">Pools</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="">Account</a></li>
+            <li><a href="/register/login">Login</a></li>
+            <li><a href="/register/signup">Sign Up</a></li>
+        </ul>
+    </div>-->
+    {% if user.is_authenticated %}
+    <center>
+    <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" fill="currentColor" class="bi bi-person-circle mb-4" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+          </svg>
+        <h4 class="heading">Hey {{user.first_name}}</h4>
+        <p class="subhead display-5 mb-5">Here you can check the pools you have created and joined !</p>
+    </div>
+    </center>
+    {% for value in values %}
+    <div>
+        <div class="container1">
+            <p class="mb-4 heading" >
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              </svg></span>
+              &nbsp;{{value.name}}</p>
+              <p class="mb-2">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-geo-fill" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"/>
+                    </svg>
+                    &nbsp;Starting point &nbsp; &nbsp; &nbsp;: &nbsp; <b>{{value.stloc}}</b>
+                </span>
+            </p>
+            <p class="mb-2">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                      <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                    </svg>
+                </span>
+                &nbsp;Destination &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp; <b>{{value.dest}}</b>
+            </p>
+            <p class="mb-2">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                      <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+                      <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                    </svg>
+                </span>
+                &nbsp;Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp; <b>{{value.poolDate}}</b>
+            </p>
+            <p class="mb-2">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                    </svg>
+                    &nbsp;Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp; <b>{{value.poolTime}}</b>
+                </span>
+            </p>
+            <p class="mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
+                    <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                  </svg>
+                  &nbsp;Mode  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  : &nbsp; <b>{{value.mode}}</b>
+            </p>
+            <p class="mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                  </svg>
+                  &nbsp;No of People &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp; <b>{{value.count}} / {{value.maxPPL}}</b>
+              </p>
+
+        </div>
+    </div>
+    {% endfor %}
+    <!--
+    {% for value in values %}
+    <div style="border:2px solid black;width:300px;float:left;margin:20px 30px;">
+        
+        <ul>
+            <li><h3>Name  : </h3><p>{{value.name}}</p></li>
+            <li><h3>Roll No/Username : </h3><p>{{value.rollNo}}</p></li>
+            <li><h3>Starting location  : </h3><p>{{value.stloc}}</p></li>
+            <li><h3>Destination : </h3><p>{{value.dest}}</p></li>
+            <li><h3>Date  : </h3><p>{{value.poolDate}}</p></li>
+            <li><h3>Time : </h3><p>{{value.poolTime}}</p></li>
+            <li><h3>Mode of transport: </h3><p>{{value.mode}}</p></li>
+            <li><h3>Maximum No of ppl  : </h3><p>{{value.maxPPL}}</p></li>
+            <li><h3>Number of ppl in the pool : </h3><p>{{value.count}}</p></li>
+        </ul>
+    </div>
+    {% endfor %}
+
+-->
+    {% else %}
+    <center><h2>Please login to access your details!</h2></center>
+    {% endif %}
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+</body>
+</html>
