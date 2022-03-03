@@ -6,7 +6,7 @@ We humans are social beings who find warmth and comfort in the people around us 
 The project “Travel Pool” is one step in that direction making everyone’s travel comfortable. The person has to Sign up/log in, after logging in they can view all the existing tickets(pools) which consist of time of travel, starting point, destination, their mode of transport, number of people (at maximum) they are willing to travel with etc.… If the person is interested to join any of the existing pools, they can access through the add to pool button and they can have a chat conversation through the website without the phone numbers being disclosed by us unless they do it explicitly. If the person is not willing to join any of the existing pools, they can create a new pool. And once the time elapsed the pool will be automatically closed.
 
 <h2>Technologies Used</h2>
-Front End - HTML , CSS, Javascript<br>
+Front End - HTML , CSS, Javascript,Bootstrap<br>
 Back End   - Django<br>
 Database  - PostgreSQL<br>
 
