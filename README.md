@@ -7,7 +7,7 @@ The project “Travel Pool” is one step in that direction making everyone’s 
 
 <h2>Technologies Used</h2>
 Front End - HTML , CSS, Javascript,Bootstrap<br>
-Back End   - Django<br>
+Framework   - Django<br>
 Database  - PostgreSQL<br>
 
 <h2>Video Demonstartion</h2>https://drive.google.com/file/d/1tI5bw518c8hioPX_15OywL-xlYyeyn60/view?usp=sharing
